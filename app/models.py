@@ -5,13 +5,13 @@ class Site(models.Model):
     """
     A Site with several entries.
     """
-    name = models.CharField("name", max_length=400, unique=True)
+    name = models.CharField('name', max_length=400, unique=True)
 
     def get_absolute_url(self):
-        return "/sites/{}".format(self.id)
+        return '/sites/{}'.format(self.id)
 
     def __str__(self):
-        return "{} Site".format(self.name)
+        return '{} Site'.format(self.name)
 
 
 class DataEntry(models.Model):
@@ -24,4 +24,4 @@ class DataEntry(models.Model):
     b_value = models.FloatField()
 
     def __str__(self):
-        return "Data entry {} for site {}".format(self.id, self.site)
+        return 'Data entry {} for site {}'.format(self.id, self.site)

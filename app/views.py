@@ -8,8 +8,8 @@ def sites(request):
     The "home" page, with the list of sites.
     """
     context = {
-        "active": "sites",
-        "sites": models.Site.objects.all()
+        'active': 'sites',
+        'sites': models.Site.objects.all()
     }
     return render(request, 'assignment/sites.html', context=context)
 
@@ -20,9 +20,9 @@ def site_page(request, id=None):
     """
     site = get_object_or_404(models.Site, pk=id)
     context = {
-        "active": "sites",
-        "site": site,
-        "entries": site.dataentry_set.all().order_by("date"),
+        'active': 'sites',
+        'site': site,
+        'entries': site.dataentry_set.all().order_by('date'),
     }
     return render(request, 'assignment/site_page.html', context=context)
 
@@ -61,8 +61,8 @@ def summary_sums(request):
         })
 
     context = {
-        "active": "summary-sum",
-        "rows": rows,
+        'active': 'summary-sum',
+        'rows': rows,
     }
     return render(request, 'assignment/summary.html', context=context)
 
@@ -84,7 +84,7 @@ def summary_averages(request):
             b_vals_avg=Avg('dataentry__b_value'))]
 
     context = {
-        "active": "summary-average",
-        "rows": rows
+        'active': 'summary-average',
+        'rows': rows
     }
     return render(request, 'assignment/summary.html', context=context)
