@@ -9,8 +9,8 @@ COPY . .
 
 EXPOSE 8000
 VOLUME /data
+ENV DEBUG no
 
 CMD /usr/local/bin/gunicorn \
     -b 0.0.0.0:8000 \
     assignment_3mw.wsgi
-    # -env DJANGO_SETTINGS_MODULE=assignment_3mw.settings \

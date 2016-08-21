@@ -6,6 +6,9 @@ services:
         command: python3 manage.py runserver 0.0.0.0:8000
         ports:
             - "8000:8000"
+        volumes:
+            - ".:/app"
         environment:
+            ASSIGNMENT_DB_PATH: "/data/assignment.sqlite3"
             DEBUG: "yes"
             SECRET_KEY: "dev-only weak secret"

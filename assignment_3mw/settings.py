@@ -15,20 +15,12 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+SECRET_KEY = os.environ["SECRET_KEY"]
+DEBUG = os.environ.get("DEBUG", "yes") == "yes"
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e+-apcjzzkaz_jjqk5x*azkfg$hivaq9f8@2prv&e5d*m5qymj'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
+# We default to making the app accept requests to any hostname, which may not
+# be safe
+ALLOWED_HOSTS = [os.environ.get("ASSIGNMENT_HOSTNAME", "*")]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app'
 ]
 
 MIDDLEWARE = [
@@ -76,7 +69,9 @@ WSGI_APPLICATION = 'assignment_3mw.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.environ.get(
+            "ASSIGNMENT_DB_PATH",
+            os.path.join(BASE_DIR, 'db.sqlite3')),
     }
 }
 
