@@ -8,6 +8,7 @@ services:
             - "8000:8000"
         volumes:
             - ".:/app"
+            - "/tmp:/data"
         environment:
             ASSIGNMENT_DB_PATH: "/data/assignment.sqlite3"
             DEBUG: "yes"
