@@ -2,14 +2,28 @@
 
 {% block content %}
 <h1>Summary</h1>
+    <div>
+        <a href="/summary" class="btn btn-primary">
+            Sum
+        </a>
+        <a href="/summary-average" class="btn btn-primary">
+            Average
+        </a>
+    </div>
     <table class="table">
-        <thead></thead>
+        <thead>
+            <td>Site</td>
+            <td>A Value</td>
+            <td>B Value</td>
+        </thead>
         <tbody>
-            {% for site in sites %}
-                <tr class=site-row">
-                    <td>{{site.name}} Site</td>
-                </tr>
-            {% endfor %}
+        {% for row in rows %}
+            <tr class=site-row">
+                <td>{{row.site}} Site</td>
+                <td>{{row.a_value|floatformat:2}}</td>
+                <td>{{row.b_value|floatformat:2}}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}

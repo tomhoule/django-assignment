@@ -18,7 +18,7 @@ class DataEntry(models.Model):
     """
     A data row attached to a Site.
     """
-    site = models.ForeignKey(to=Site, on_delete=models.CASCADE)
+    site = models.ForeignKey(to=Site, on_delete=models.CASCADE, null=False)
     date = models.DateField()
     a_value = models.FloatField()
     b_value = models.FloatField()

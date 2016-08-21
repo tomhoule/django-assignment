@@ -33,7 +33,7 @@ class Pages(TestCase):
     def test_sites_page_renders(self):
         res = self.client.get("/sites")
         self.assertEqual(res.status_code, 200)
-        self.assertIn(b"<h1>Sites</h1>", res.content)
+        self.assertIn("<h1>Sites</h1>", res.content.decode())
 
     def test_homepage_and_sites_page_are_the_same(self):
         home = self.client.get("/").content
@@ -50,17 +50,30 @@ class Pages(TestCase):
     def test_summary_page_renders(self):
         res = self.client.get("/summary")
         self.assertEqual(res.status_code, 200)
-        self.assertIn(b"<h1>Summary</h1>", res.content)
+        self.assertInHTML("<h1>Summary</h1>", res.content.decode())
 
     def test_site_page_renders(self):
         res = self.client.get("/sites/{}".format(self.site.id))
         self.assertEqual(res.status_code, 200)
-        self.assertIn(self.site.name.encode(), res.content)
+        self.assertIn(self.site.name, res.content.decode())
 
     def test_site_page_tables_has_the_right_number_of_rows(self):
         res = self.client.get("/sites/{}".format(self.site.id))
-        matches = re.findall(r'class="dataentry-row"', str(res.content))
+        matches = re.findall(r'class="dataentry-row"', res.content.decode())
         self.assertEqual(len(matches), 1)  # TODO: make this more robust
+
+    def test_summary_average_page_renders(self):
+        res = self.client.get("/summary-average")
+        self.assertEqual(res.status_code, 200)
+        self.assertInHTML("<h1>Summary</h1>", res.content.decode())
+
+    def test_the_sum_view_hits_the_database_only_twice(self):
+        with self.assertNumQueries(2):
+            self.client.get("/summary")
+
+    def test_the_averages_view_hits_the_database_once(self):
+        with self.assertNumQueries(1):
+            self.client.get("/summary-average")
 
 
 class Models(TestCase):
