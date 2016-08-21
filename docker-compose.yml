@@ -1,0 +1,11 @@
+version: "2"
+services:
+    assignment:
+        build: .
+        image: assignment
+        command: python3 manage.py runserver 0.0.0.0:8000
+        ports:
+            - "8000:8000"
+        environment:
+            DEBUG: "yes"
+            SECRET_KEY: "dev-only weak secret"
