@@ -26,14 +26,12 @@ Alternatively:
 
 ## What should be done next
 
-On a real project, the following things should be done next:
+On a real project, the following additional steps should probably be taken:
 
-  - Switch to a more scalable databas, like postgres
+  - Switch to a more scalable database, like postgres
   - Set up an assets pipeline, maybe vendor bootstrap, and serve static files
   - Use `coverage` to get detailed data on test overage
   - Make the templates more modular (separate the nav bar...)
   - Maybe package it (write a setup.py, etc.)
 
 Details on some technical choices are available in the commit messages.
-
-
