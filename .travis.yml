@@ -13,8 +13,8 @@ env:
    - SECRET_KEY="notimportant"
 
 after_success:
-    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    - docker build -t django-3mw-assignment
-    - docker push django-3mw-assignment:latest
+    - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+    - docker build -t tomhoule/django-3mw-assignment .
+    - docker push tomhoule/django-3mw-assignment:latest
 
 script: "python manage.py test"
