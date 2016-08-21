@@ -1,0 +1,20 @@
+language: python
+python:
+    - "3.5"
+
+install: pip install -r dev-requirements.txt
+
+sudo: required
+
+services:
+    - docker
+
+env:
+   - SECRET_KEY="notimportant"
+
+after_success:
+    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    - docker build -t tomhoule/django-3mw-assignment
+    - docker push tomhoule/django-3mw-assignment
+
+script: "python manage.py test"
