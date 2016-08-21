@@ -7,6 +7,9 @@ class Site(models.Model):
     """
     name = models.CharField("name", max_length=400, unique=True)
 
+    def get_absolute_url(self):
+        return "/sites/{}".format(self.id)
+
     def __str__(self):
         return "{} Site".format(self.name)
 

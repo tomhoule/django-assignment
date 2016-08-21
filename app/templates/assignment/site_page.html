@@ -1,0 +1,21 @@
+{% extends 'assignment/base.html' %}
+
+{% block content %}
+<h1>Site details - {{site.name}} Site</h1>
+    <table class="table">
+        <thead>
+            <td>Date</td>
+            <td>A Value</td>
+            <td>B Value</td>
+        </thead>
+        <tbody>
+        {% for row in entries %}
+            <tr class="dataentry-row">
+                <td>{{ row.date }}</td>
+                <td>{{ row.a_value }}</td>
+                <td>{{ row.b_value }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

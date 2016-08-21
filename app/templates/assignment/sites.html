@@ -1,0 +1,14 @@
+{% extends 'assignment/base.html' %}
+
+{% block content %}
+<h1>Sites</h1>
+    <ul>
+        {% for site in sites %}
+            <a
+                class="site-row"
+                href="{{site.get_absolute_url}}">
+                {{site.name}} Site
+            </a>
+        {% endfor %}
+    </ul>
+{% endblock %}
