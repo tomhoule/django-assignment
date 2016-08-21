@@ -3,18 +3,22 @@
 {% block content %}
 <h1>Summary</h1>
     <div>
-        <a href="/summary" class="btn btn-primary">
+        <a href="/summary"
+           class="btn btn-primary
+                  {% if active == "summary-sum" %}active{% endif %}">
             Sum
         </a>
-        <a href="/summary-average" class="btn btn-primary">
+        <a href="/summary-average"
+           class="btn btn-primary
+                  {% if active == "summary-average" %}active{% endif %}">
             Average
         </a>
     </div>
     <table class="table">
         <thead>
-            <td>Site</td>
-            <td>A Value</td>
-            <td>B Value</td>
+            <td><strong>Site</strong></td>
+            <td><strong>A Value</strong></td>
+            <td><strong>B Value</strong></td>
         </thead>
         <tbody>
         {% for row in rows %}

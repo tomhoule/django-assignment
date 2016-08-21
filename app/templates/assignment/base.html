@@ -6,12 +6,28 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="/sites">Sites</a></li>
-                <li><a href="/summary">Summary</a></li>
-            </ul>
+        <nav class="navbar navbar-default">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li
+                        {% if active == "sites" %}class="active"{% endif %}
+                        role="presentation">
+                        <a href="/sites">
+                            Sites
+                        </a>
+                    </li>
+                    <li
+                        {% if "summary" in active %}class="active"{% endif %}
+                        role="presentation">
+                        <a href="/summary">
+                            Summary
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+        <div class="container">
         {% block content %}{% endblock %}
+        </div>
     </body>
 </html>

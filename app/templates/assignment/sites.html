@@ -2,13 +2,15 @@
 
 {% block content %}
 <h1>Sites</h1>
-    <ul>
+    <ul class="list-group">
         {% for site in sites %}
+        <li class="list-group-item">
             <a
                 class="site-row"
                 href="{{site.get_absolute_url}}">
                 {{site.name}} Site
             </a>
+        </li>
         {% endfor %}
     </ul>
 {% endblock %}

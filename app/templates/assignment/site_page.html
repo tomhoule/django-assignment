@@ -4,16 +4,16 @@
 <h1>Site details - {{site.name}} Site</h1>
     <table class="table">
         <thead>
-            <td>Date</td>
-            <td>A Value</td>
-            <td>B Value</td>
+            <td><strong>Date</strong></td>
+            <td><strong>A Value</strong></td>
+            <td><strong>B Value</strong></td>
         </thead>
         <tbody>
         {% for row in entries %}
             <tr class="dataentry-row">
                 <td>{{ row.date }}</td>
-                <td>{{ row.a_value }}</td>
-                <td>{{ row.b_value }}</td>
+                <td>{{ row.a_value|floatformat:2 }}</td>
+                <td>{{ row.b_value|floatformat:2 }}</td>
             </tr>
         {% endfor %}
         </tbody>
